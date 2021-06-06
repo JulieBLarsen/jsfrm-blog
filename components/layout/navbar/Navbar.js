@@ -15,12 +15,12 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="w-100 mb-20 bg-white text-center">
-        <p className=" text-indigo-600 hover:text-indigo-500 font-bold text-2xl mt-4">
-          This is a blog
+      <div className="w-100 mb-20  bg-coral-light text-center">
+        <p className="handwritten cursor-pointer text-neutral-900 hover:text-neutral-700 text-6xl mt-4">
+          Cara Loves Coffee
         </p>
-        <nav className="flex justify-center mx-auto">
-          <Navlink href="/" text="Home" />
+        <nav className="flex flex-wrap justify-center mx-auto">
+          <Navlink href="/" text="Posts" />
           <Navlink href="/contact" text="Contact" />
 
           {auth ? (
@@ -28,7 +28,7 @@ export default function Navbar() {
               <Navlink href="/admin" text="Admin" />
               <div className="flex items-center">
                 <button
-                  className="ml-4 bg-indigo-600 rounded hover:bg-indigo-500  text-white text-sm py-1 px-4"
+                  className="ml-4 bg-teal-dark hover:bg-neutral-600 font-semibold tracking-wider uppercase  text-white text-sm py-2 px-4 rounded-sm focus:outline-none outline-none"
                   onClick={logout}>
                   Log out
                 </button>

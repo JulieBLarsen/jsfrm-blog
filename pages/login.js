@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { BASE_URL, TOKEN_PATH } from '../constants/api';
+import { SubmitButton } from '../components/common/Button';
 
 const url = BASE_URL + 'wp-json/' + TOKEN_PATH;
 
@@ -92,12 +93,10 @@ function Login() {
                   </div>
                   <div className="px-4 py-3 bg-gray-50 text-right sm:px-6 flex flex-col md:flex-row justify-end items-center">
                     <div className="pr-4">{loginError}</div>
-
-                    <button
-                      type="submit"
-                      className=" text-white bg-indigo-600 hover:bg-indigo-500 rounded py-2 px-4 m-0">
+                    <SubmitButton>
+                      {' '}
                       {submitting ? 'Logging in' : 'Log in'}
-                    </button>
+                    </SubmitButton>
                   </div>
                 </div>
               </fieldset>

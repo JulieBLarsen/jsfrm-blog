@@ -1,6 +1,8 @@
 import axios from 'axios';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import Button from '../common/Button';
 
 function Card(props) {
   const [image, setImage] = useState([]);
@@ -31,35 +33,50 @@ function Card(props) {
     hour12: false,
   });
   if (error) {
-    return <p>{error}</p>;
+    return (
+      <div className="card relative flex flex-col justify-center items-center w-full rounded-sm px-6 py-4 m-4 shadow-lg text-left">
+        <h2>Error</h2>
+        <p>{error}</p>
+      </div>
+    );
   }
 
   if (loading) {
-    return <p>Loading image..</p>;
+    return (
+      <div className="card relative flex flex-col justify-center items-center w-full rounded-sm px-6 py-4 m-4 shadow-lg text-left">
+        <p>
+          <FontAwesomeIcon
+            className="w-10 text-neutral-400 animate-spin"
+            icon={faSpinner}
+            spin
+          />
+        </p>
+      </div>
+    );
   }
 
   return (
     <div
       key={props.id}
-      className="relative min-h-96 flex flex-col justify-between w-full  px-6 py-4 m-4 shadow-lg text-left">
-      <div className="z-10 bg-white">
+      className="card h-full mb-10 relative flex flex-col justify-end items-center w-full rounded-sm px-6 py-4 shadow text-left">
+      <div className="z-10 w-full mx-auto bg-white bg-opacity-90 backdrop-filter backdrop-blur-2xl shadow p-6 rounded-sm text-center">
         <div>
-          <h2 className="mb-1">{props.title.rendered}</h2>
-          <p className="text-indigo-600 mb-4 font-semibold">{formattedDate}</p>
+          <h2>{props.title.rendered}</h2>
+          <p className="pb-4 mb-4 font-semibold border-b border-neutral-500">
+            {formattedDate}
+          </p>
           <div
-            className="text-gray-600"
-            dangerouslySetInnerHTML={{ __html: props.excerpt.rendered }}></div>
+            className="text-neutral-800 line-clamp-3"
+            dangerouslySetInnerHTML={{
+              __html: props.excerpt.rendered,
+            }}></div>
         </div>
-        <Link href={`detail/${props.slug}`}>
-          <a className="text-right pr-2 text-indigo-600 hover:text-indigo-500">
-            Read more
-          </a>
-        </Link>{' '}
+        <Button href={`detail/${props.slug}`}> Read full post</Button>
       </div>
       <img
         src={image.source_url}
         alt=""
-        className="absolute z-0 inset-0 w-full h-full object-cover"
+        className="absolute rounded-sm z-0 inset-0 w-full h-full object-cover"
       />
     </div>
   );

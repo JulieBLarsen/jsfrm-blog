@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Button, { SubmitButton } from '../common/Button';
 
 const schema = yup.object().shape({
   firstname: yup
@@ -124,11 +125,7 @@ function ContactForm() {
           </div>
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6 flex flex-col md:flex-row justify-end items-center">
             <div className="pr-2">{submitMessage}</div>
-            <button
-              type="submit"
-              className=" text-white bg-indigo-600 hover:bg-indigo-500 rounded py-2 px-4 m-0">
-              Send message
-            </button>
+            <SubmitButton>Send message</SubmitButton>
           </div>
         </div>
       </form>

@@ -1,26 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: 'Authentic Signature';
+  src: url('/fonts/authentic_signature-webfont.woff2') format('woff2'),
+    url('/fonts/authentic_signature-webfont.woff') format('woff'),
+    url('/fonts/authentic_signature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  @apply bg-indigo-50 text-gray-800;
+  @apply bg-light text-neutral-800;
 }
 
+.handwritten {
+  font-family: 'Authentic Signature', ui-serif, Georgia, Cambria,
+    'Times New Roman', Times, serif;
+}
 a {
   color: inherit;
   text-decoration: none;
   @apply font-semibold block my-2;
 }
 a.nav__link {
-  @apply inline-block p-2 hover:text-gray-500;
+  @apply inline-block uppercase font-medium text-sm tracking-wider px-4 p-2 hover:opacity-70;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Merriweather', ui-serif, Georgia, Cambria, 'Times New Roman',
+    Times, serif;
 }
 
 h2 {
-  @apply font-bold text-lg my-2 !important;
+  @apply font-light uppercase text-3xl mb-3 !important;
 }
 .posts p {
   @apply leading-relaxed;
@@ -29,7 +52,9 @@ h2 {
 * {
   box-sizing: border-box;
 }
-
+.card {
+  min-height: 500px;
+}
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -57,9 +82,14 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-
+.post__single p {
+  @apply my-4 leading-relaxed;
+}
+.post__single img {
+  @apply mx-auto py-4;
+}
 input,
 select,
 textarea {
-  @apply mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+  @apply mt-1 block w-full py-2 px-3 border border-neutral-300 bg-white shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm;
 }
