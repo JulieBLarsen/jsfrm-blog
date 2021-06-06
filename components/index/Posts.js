@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../../constants/api';
+import { BASE_URL, MEDIA_URL } from '../../constants/api';
 import Card from './Card';
 
 function Posts() {
@@ -40,9 +40,11 @@ function Posts() {
   }
 
   return (
-    <div className="posts container mx-auto flex flex-wrap justify-center">
+    <div className="posts container w-full">
       {posts.map((post) => {
         const { id, title, date, excerpt, slug } = post;
+        const featured_image = BASE_URL + MEDIA_URL + post.featured_media;
+
         return (
           <Card
             key={id}
@@ -51,6 +53,7 @@ function Posts() {
             date={date}
             excerpt={excerpt}
             slug={slug}
+            image_api={featured_image}
           />
         );
       })}

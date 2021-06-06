@@ -53,7 +53,6 @@ function Login() {
           <p>logged in</p>
         ) : (
           <>
-            {loginError}
             <form onSubmit={handleSubmit(onSubmit)}>
               <fieldset disabled={submitting}>
                 <div className="mt-14 shadow-lg overflow-hidden sm:rounded-md">

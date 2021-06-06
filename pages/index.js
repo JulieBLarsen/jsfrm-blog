@@ -8,7 +8,13 @@ function Home() {
     <Layout>
       <Head />
       <Heading text="Blog posts" />
-      <Posts />
+      <div className="grid grid-cols-5">
+        <div className="col-span-3">
+          <Posts />
+        </div>
+
+        <div>sidebar</div>
+      </div>
     </Layout>
   );
 }
